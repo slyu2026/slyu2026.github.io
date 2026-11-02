@@ -1,0 +1,219 @@
+\documentclass[11pt]{amsart}
+\usepackage{amsmath,amssymb,amsthm,mathtools,hyperref,tikz-cd,amscd}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{enumitem}
+\usepackage[scale=0.95,ttdefault]{AnonymousPro}
+\hypersetup{
+   colorlinks=true,
+   linkcolor=blue,
+    urlcolor=cyan,
+    }
+%\usepackage[noadjust]{cite}
+%\renewcommand{\citepunct}{;\penalty\citemidpenalty\ }
+
+\usepackage[
+    backend=biber,
+    style=alphabetic,
+    useprefix=true,
+    maxnames=100,
+    maxcitenames=100,
+    sorting=anyt
+]{biblatex}
+% ref.bib is referenced by the supplied TeX files but was not attached.
+\addbibresource{ref.bib}
+\newcommand{\Tag}[1]{\href{https://stacks.math.columbia.edu/tag/#1}{\texttt{#1}}}
+\newcommand{\citestacks}[1]{\cite[Tag \Tag{#1}]{stacks}}
+\newcommand{\citetwostacks}[2]{\cite[Tags \Tag{#1} and \Tag{#2}]{stacks}}
+
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newtheorem{definition}[theorem]{Definition}
+\newcommand{\RHom}{\operatorname{RHom}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\depth}{\operatorname{depth}}
+\newcommand{\dimn}{\operatorname{dim}}
+\newcommand{\D}{\mathrm{D}}
+\newcommand{\Db}{\D^{\mathrm b}}
+\newcommand{\Dcoh}{\D_{\mathrm{coh}}}
+\newcommand{\Dftor}{\D_{\mathrm{tor}}}
+\newcommand{\Dfg}{\D_{\mathrm{fg}}}
+\newcommand{\HH}{\mathrm H}
+\newcommand{\m}{\mathfrak m}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+\newcommand{\what}[1]{\widehat{#1}}
+
+
+
+% Additional notation required by the earlier notes.
+\newcommand{\RGamma}{R\Gamma}
+\newcommand{\DIcomp}[1]{\D_{#1\operatorname{-comp}}}
+\newcommand{\DItors}[1]{\D_{#1^{\infty}\operatorname{-tors}}}
+\newcommand{\Dcomp}{\D_{\mathrm{comp}}}
+\newcommand{\Dtors}{\D_{\mathrm{tors}}}
+\newcommand{\Icomp}{I\text{-}\mathrm{comp}}
+\newcommand{\Itors}{I\text{-}\mathrm{tors}}
+\newcommand{\colim}{\operatorname{colim}}
+\newcommand{\cofib}{\operatorname{cofib}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\vv}{\vee\vee}
+\newcommand{\qis}{\xrightarrow{\sim}}
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fc}{\mathfrak{c}}
+\newcommand{\fr}{\mathfrak{r}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fA}{\mathfrak{A}}
+\newcommand{\fB}{\mathfrak{B}}
+\newcommand{\fM}{\mathfrak{M}}
+\newcommand{\fN}{\mathfrak{N}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\fP}{\mathfrak{P}}
+\newcommand{\fQ}{\mathfrak{Q}}
+\newcommand{\Ass}{\operatorname{Ass}}
+\newcommand{\Sing}{\operatorname{Sing}}
+\newcommand{\Frac}{\operatorname{Frac}}
+\newcommand{\Disc}{\operatorname{Disc}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\HT}{\operatorname{ht}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\codim}{\operatorname{codim}}
+\newcommand{\ulim}{\operatorname{ulim}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\Tor}{\operatorname{Tor}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Coh}{\operatorname{Coh}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cU}{\mathcal{U}}
+\newcommand{\cW}{\mathcal{W}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cJ}{\mathcal{J}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\bE}{\mathbf{E}}
+\newcommand{\bF}{\mathbf{F}}
+\newcommand{\bP}{\mathbf{P}}
+\newcommand{\bC}{\mathbf{C}}
+\newcommand{\bR}{\mathbf{R}}
+\newcommand{\bQ}{\mathbf{Q}}
+\newcommand{\bN}{\mathbf{N}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bn}{\mathbf{n}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bb}{\mathbf{b}}
+\title{Assignment}
+\date{November 4, 2026}
+\author{Shiji Lyu}
+\address{Institute of Mathematics, Chinese Acadamy of Sciences\\Beijing}
+\email{\href{mailto:slyu@alumni.princeton.edu}{slyu@alumni.princeton.edu}}
+\urladdr{\url{https://slyu2026.github.io/}}
+
+\begin{document}
+\maketitle
+
+\section{Injective and projective dimension}
+
+\begin{remark}
+It is not difficult to prove the following by transfinite induction (Baer's criterion). Let $A$ be a ring and $E\in\D^\heartsuit(A)$. Then $E$ is injective if and only if
+\[
+\Ext_A^1(A/\fa,E)=0
+\qquad\text{for every ideal }\fa\subseteq A.
+\]
+Another transfinite induction argument tells us that every $M\in\D^\heartsuit(A)$ is contained in some injective $E\in\D^\heartsuit(A)$.
+
+For a complex $X\in\D^+(A)$ and $\alpha,\beta\in\mathbb Z$, it is not difficult to show that the following are equivalent:
+\begin{enumerate}[label=(\arabic*)]
+\item For every $M\in\D^\heartsuit(A)$, we have
+\[
+\RHom_A(M,X)\in\D^{[\alpha,\beta]}(A).
+\]
+\item $X$ is represented by a complex of injective $A$-modules in degrees $[\alpha,\beta]$.
+\end{enumerate}
+In this case, we say that $X$ has \emph{injective amplitude} in $[\alpha,\beta]$.
+\end{remark}
+
+\medskip
+\noindent\textbf{Problem 1.}
+Let $(A,\m,k)$ be a Noetherian local ring.
+\begin{enumerate}[label=(\arabic*)]
+\item Let $X\in\Dcomp^+(A)$, $\Dtors^+(A)$, or $\Dcoh^+(A)$, and let $\alpha,\beta\in\mathbb Z$. Show that if
+\[
+\RHom_A(k,X)\in\D^{[\alpha,\beta]}(A),
+\]
+then $X$ has injective amplitude in $[\alpha,\beta]$.
+
+In the $\Dtors^+(A)$ case, you are allowed to take the following statement for granted: if $I\in\D^\heartsuit(A)$ is injective, then $\RGamma_{\m}I$ is also in $\D^\heartsuit(A)$ and is injective.
+
+\item Let $X\in\Dcomp^+(A)$ or $\Dcoh^+(A)$ have injective amplitude in $[\alpha,\beta]$. Show that, in fact,
+\[
+\RHom_A(M,X)\in\D^{[\alpha,\beta-p]}(A)
+\]
+for every $M\in\Dcoh^\heartsuit(A)$ of depth $p$.
+\end{enumerate}
+
+For $M\in\D^\heartsuit(A)$, let
+\begin{align*}
+\operatorname{pd}_A M
+&=\min\bigl\{j\mid \text{for all }i>j,\ \Ext_A^i(M,-)=0\bigr\},\\
+% The scan writes "max" in the following definition; retained verbatim.
+\id_A M
+&=\max\bigl\{j\mid \text{for all }i>j,\ \Ext_A^i(-,M)=0\bigr\}.
+\end{align*}
+Let $(A,\m,k)$ be Noetherian local. In the October~27 meeting, we saw, using minimal resolutions, that if $M\in\Dcoh^\heartsuit(A)$, then
+\[
+% The scan appears to write "min" here; retained rather than corrected to "max".
+\operatorname{pd}_A M
+=\min\bigl\{j\mid\Tor_j^A(k,M)\ne0\bigr\}.
+\]
+From the previous problem we see that if $M\in\D_\square^\heartsuit(A)$, where $\square\in\{\mathrm{tors},\mathrm{comp},\mathrm{coh}\}$, then
+\[
+% "min" is as written in the scan.
+\id_A M=\min\bigl\{j\mid\Ext_A^j(k,M)\ne0\bigr\}.
+\]
+
+\medskip
+\noindent\textbf{Problem 2.}
+Let $f\in\m$ be a nonzerodivisor in $A$. Let $M\in\Dcoh^\heartsuit(A)$ be such that $fM=0$. Show that
+\begin{align*}
+% Both equalities are transcribed as written, including the direction of the shifts.
+\operatorname{pd}_{A/fA}M&=\operatorname{pd}_A M+1,\\
+\id_{A/fA}M&=\id_A M+1.
+\end{align*}
+
+\medskip
+\noindent\textbf{Problem 3.}
+Let $0\ne M\in\Dcoh^\heartsuit(A)\cap\Dtors(A)$, i.e.\ let $M$ be a nonzero finite-length $A$-module.
+\begin{enumerate}[label=(\arabic*)]
+\item If $\operatorname{pd}_A M<\infty$, show that $A$ is Cohen--Macaulay and $\operatorname{pd}_A M=\dimn A$.
+\item If $\id_A M<\infty$, show that $A$ is Cohen--Macaulay and $\id_A M=\dimn A$.
+\item Conversely, assume that $A$ is Cohen--Macaulay. Show that such an $M$ exists. You may take different modules $M$ for projective dimension and injective dimension, respectively.
+\end{enumerate}
+\noindent\emph{Hint.} For the projective dimension statement, use Auslander--Buchsbaum. For the injective dimension statement, consider $\Hom_A(M,E)$.
+
+\end{document}
